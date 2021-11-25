@@ -1,6 +1,11 @@
 <h2>Daftar Projects</h2>
 <div class="table-responsive">
-    <a href="#" class="btn btn-primary btn-sm mb-2">Tambah Projects</a>
+    <?php if ($this->session->flashdata("ok")) : ?>
+        <div class="alert-danger alert">
+            <?= $this->session->flashdata("ok") ?>
+        </div>
+    <?php endif ?>
+    <a href="<?= base_url('Project/input') ?>" class="btn btn-primary btn-sm mb-2">Tambah Projects</a>
     <table id="example" class="table table-striped table-sm">
         <thead>
             <tr>
@@ -9,18 +14,24 @@
                 <th>Teknologi</th>
                 <th>Tanggal Realise</th>
                 <th>link Demo</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            <?php for ($i = 0; $i < 10; $i++) : ?>
+            <?php $no = 1;
+            foreach ($data as $d) : ?>
                 <tr>
-                    <td>1,001</td>
-                    <td>random</td>
-                    <td>data</td>
-                    <td>placeholder</td>
-                    <td>text</td>
+                    <td><?= $no++ ?></td>
+                    <td><?= $d->judul ?></td>
+                    <td><?= $d->teknologi ?></td>
+                    <td><?= $d->tanggal ?></td>
+                    <td><a href="<?= $d->link ?>"><?= $d->link ?></a></td>
+                    <td>
+                        <a href="<?= base_url('Project/edit/' . $d->id) ?>" class=" btn btn-primary btn-sm">edit</a>
+                        <a href="<?= base_url('Project/delete/' . $d->id) ?>" class="btn btn-danger btn-sm">hapus</a>
+                    </td>
                 </tr>
-            <?php endfor ?>
+            <?php endforeach ?>
         </tbody>
     </table>
 </div>
