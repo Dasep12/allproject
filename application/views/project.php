@@ -6,7 +6,7 @@
         </div>
     <?php endif ?>
     <?php if ($this->session->flashdata("info")) : ?>
-        <div class="alert-danger success">
+        <div class="alert-info alert">
             <p><?= $this->session->flashdata("info") ?></p>
         </div>
     <?php endif ?>
@@ -30,7 +30,7 @@
                     <td><?= $d->judul ?></td>
                     <td><?= $d->teknologi ?></td>
                     <td><?= $d->tanggal ?></td>
-                    <td><a href="<?= $d->link ?>"><?= $d->link ?></a></td>
+                    <td><a target="_blank" href="<?= $d->link ?>"><?= $d->link ?></a></td>
                     <td>
                         <a href="<?= base_url('Project/edit/' . $d->id) ?>" class=" btn btn-primary btn-sm">edit</a>
                         <a href="<?= base_url('Project/delete/' . $d->id) ?>" class="btn btn-danger btn-sm">hapus</a>

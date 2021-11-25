@@ -72,7 +72,7 @@ class Project extends CI_Controller
         $tgl          = $this->input->post("tanggal");
         $link         = $this->input->post("link");
         $id           = $this->input->post("id");
-
+        $img          = $_FILES['file']['name'];
         if ($file == null || empty($file)) {
             $data = [
                 'judul'      => $judul,
@@ -86,6 +86,28 @@ class Project extends CI_Controller
             $this->session->set_flashdata("ok", "update");
             redirect('Project');
         } else {
+            $config['upload_path']   = './assets/img/';
+            $config['allowed_types']   = 'jpg|jpeg|png';
+            $config['file_name']       = date('his') . $img;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload("file")) {
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata("fail", $error);
+                redirect('Project');
+            } else {
+                $data = [
+                    'judul'      => $judul,
+                    'teknologi'  => $teknologi,
+                    'tanggal'    => $tgl,
+                    'link'       => $link,
+                    'img'        => $this->upload->data('file_name')
+                ];
+
+                $this->db->where('id', $id);
+                $this->db->update("pro", $data);
+                $this->session->set_flashdata('ok', 'berhasil');
+                redirect('Project/input');
+            }
         }
     }
 }

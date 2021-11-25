@@ -62,7 +62,7 @@
 
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
+                <a class="nav-link" href="<?= base_url('Logout') ?>">Sign out</a>
             </li>
         </ul>
     </nav>
@@ -73,13 +73,13 @@
                 <div class="sidebar-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="">
                                 <span data-feather="home"></span>
                                 Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link  active" href="#">
+                            <a class="nav-link  active" href="<?= base_url('Project') ?>">
                                 <span data-feather="file"></span>
                                 Projects
                             </a>
