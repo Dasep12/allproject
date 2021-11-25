@@ -5,6 +5,11 @@
             <?= $this->session->flashdata("ok") ?>
         </div>
     <?php endif ?>
+    <?php if ($this->session->flashdata("info")) : ?>
+        <div class="alert-danger success">
+            <p><?= $this->session->flashdata("info") ?></p>
+        </div>
+    <?php endif ?>
     <a href="<?= base_url('Project/input') ?>" class="btn btn-primary btn-sm mb-2">Tambah Projects</a>
     <table id="example" class="table table-striped table-sm">
         <thead>
