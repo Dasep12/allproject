@@ -2,6 +2,16 @@
 
 class Login extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $id = $this->session->userdata("id");
+
+        if ($id != null || $id != "") {
+            $this->session->set_flashdata("info", "session berakhir");
+            redirect('Project');
+        }
+    }
     public function index()
     {
         $this->load->view("login");
@@ -16,8 +26,9 @@ class Login extends CI_Controller
 
         $d  = $cek->row();
         if ($cek->num_rows() > 0) {
-            $this->session->set_flashdata("info", 'Selamat Datang ' . $user);
+            $d = $cek->row();
             $this->session->set_userdata("id", $d->id);
+            $this->session->set_flashdata("info", 'Selamat Datang ' . $d->user);
             redirect('Project');
         } else {
             $this->session->set_flashdata("info", "akun tidak ditemukan");
