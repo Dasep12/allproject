@@ -3,6 +3,14 @@
 
 class Project extends CI_Controller
 {
+
+    public function __construct()
+    {
+        $id = $this->session->userdata("id");
+        if ($id == null) {
+            echo "anda harus login";
+        }
+    }
     public function index()
     {
         $data['data']   = $this->db->get("pro")->result();
