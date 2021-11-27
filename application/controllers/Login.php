@@ -25,6 +25,7 @@ class Login extends CI_Controller
 
         $cek = $this->db->get_where("akun", ['user' => $user, 'password' => $pwd]);
 
+        $d  = $cek->row();
         if ($cek->num_rows() > 0) {
             $d = $cek->row();
             $this->session->set_userdata("id", $d->id);
