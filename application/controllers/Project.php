@@ -4,16 +4,16 @@
 class Project extends CI_Controller
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-        $id = $this->session->userdata("id");
+    // public function __construct()
+    // {
+    //     parent::__construct();
+    //     $id = $this->session->userdata("id");
 
-        if ($id == null || $id == "") {
-            $this->session->set_flashdata("info", "session berakhir");
-            redirect('Logout');
-        }
-    }
+    //     if ($id == null || $id == "") {
+    //         $this->session->set_flashdata("info", "session berakhir");
+    //         redirect('Logout');
+    //     }
+    // }
 
     public function index()
     {

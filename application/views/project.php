@@ -19,7 +19,9 @@
                 <th>Teknologi</th>
                 <th>Tanggal Realise</th>
                 <th>link Demo</th>
-                <th>Aksi</th>
+                <?php if ($this->session->userdata("id") != null) : ?>
+                    <th>Aksi</th>
+                <?php endif ?>
             </tr>
         </thead>
         <tbody>
@@ -31,10 +33,12 @@
                     <td><?= $d->teknologi ?></td>
                     <td><?= $d->tanggal ?></td>
                     <td><a target="_blank" href="<?= $d->link ?>"><?= $d->link ?></a></td>
-                    <td>
-                        <a href="<?= base_url('Project/edit/' . $d->id) ?>" class=" btn btn-primary btn-sm">edit</a>
-                        <a href="<?= base_url('Project/delete/' . $d->id) ?>" class="btn btn-danger btn-sm">hapus</a>
-                    </td>
+                    <?php if ($this->session->userdata("id") != null) : ?>
+                        <td>
+                            <a href="<?= base_url('Project/edit/' . $d->id) ?>" class=" btn btn-primary btn-sm">edit</a>
+                            <a href="<?= base_url('Project/delete/' . $d->id) ?>" class="btn btn-danger btn-sm">hapus</a>
+                        </td>
+                    <?php endif ?>
                 </tr>
             <?php endforeach ?>
         </tbody>

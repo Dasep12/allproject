@@ -62,7 +62,11 @@
 
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="<?= base_url('Logout') ?>">Sign out</a>
+                <?php if ($this->session->userdata("id") != null) { ?>
+                    <a class="nav-link" href="<?= base_url('Logout') ?>">Sign out</a>
+                <?php } else { ?>
+                    <a class="nav-link" href="<?= base_url('Logout') ?>">Sign in</a>
+                <?php } ?>
             </li>
         </ul>
     </nav>
