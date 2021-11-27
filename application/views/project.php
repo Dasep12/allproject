@@ -10,7 +10,10 @@
             <p><?= $this->session->flashdata("info") ?></p>
         </div>
     <?php endif ?>
-    <a href="<?= base_url('Project/input') ?>" class="btn btn-primary btn-sm mb-2">Tambah Projects</a>
+
+    <?php if ($this->session->userdata("id") != null) : ?>
+        <a href="<?= base_url('Project/input') ?>" class="btn btn-primary btn-sm mb-2">Tambah Projects</a>
+    <?php endif ?>
     <table id="example" class="table table-striped table-sm">
         <thead>
             <tr>

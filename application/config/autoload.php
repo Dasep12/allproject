@@ -1,4 +1,8 @@
---
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+/*
+| -------------------------------------------------------------------
 | AUTO-LOADER
 | -------------------------------------------------------------------
 | This file specifies which systems should be loaded by default.
@@ -54,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session', 'database');
+$autoload['libraries'] = array('database', 'session');
 
 /*
 | -------------------------------------------------------------------
